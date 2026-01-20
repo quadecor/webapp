@@ -1,3 +1,11 @@
+// Auth route
+try {
+	console.log('Loading routes/auth...');
+	app.use('/api/auth', require('./routes/auth'));
+	console.log('Loaded routes/auth successfully.');
+} catch (err) {
+	console.error('Error loading routes/auth:', err);
+}
 
 // Global error handlers for uncaught exceptions and unhandled rejections
 process.on('uncaughtException', (err) => {
@@ -24,9 +32,16 @@ console.log('Loading cors...');
 const cors = require('cors');
 console.log('cors loaded');
 
+
 const app = express();
 console.log('express app created');
-app.use(cors());
+app.use(cors({
+	origin: [
+		'https://webapp-qhil.onrender.com',
+		'http://localhost:3000'
+	],
+	credentials: true
+}));
 console.log('cors middleware applied');
 app.use(express.json());
 console.log('json middleware applied');
