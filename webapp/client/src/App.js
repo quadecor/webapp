@@ -1,23 +1,17 @@
-
 import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
 
-
-
-  // Auth state
+function App() {
   const [authMode, setAuthMode] = useState('login');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [authMessage, setAuthMessage] = useState('');
   const [token, setToken] = useState(localStorage.getItem('token') || '');
-
-  // Player state
   const [name, setName] = useState('');
   const [averageScore, setAverageScore] = useState('');
   const [message, setMessage] = useState('');
 
-  // Auth handlers
   const handleAuth = async (e) => {
     e.preventDefault();
     setAuthMessage('');
@@ -56,7 +50,6 @@ import { useState } from 'react';
     setAuthMessage('Logged out.');
   };
 
-  // Player submit handler
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage('');
